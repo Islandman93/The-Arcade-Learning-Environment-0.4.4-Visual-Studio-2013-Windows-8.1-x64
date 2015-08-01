@@ -465,6 +465,9 @@
     <ClCompile Include="os_dependent\SettingsWin32.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ale_python_interface\ale_c_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="emucore\rsynth\Elements.def">
@@ -956,6 +959,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="os_dependent\SettingsWin32.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ale_python_interface\ale_c_wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ale_python_interface\atari_ntsc_rgb_palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

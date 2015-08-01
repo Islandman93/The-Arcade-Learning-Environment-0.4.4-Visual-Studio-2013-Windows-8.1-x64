@@ -36,9 +36,11 @@
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <PlatformToolset>v120</PlatformToolset>
     <CLRSupport>false</CLRSupport>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PlatformToolset>v120</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -64,11 +66,13 @@
     <SourcePath>$(VC_SourcePath);$(ProjectDir);$(ProjectDir)\agents;$(ProjectDir)\common;$(ProjectDir)\controllers;$(ProjectDir)\emucore;$(ProjectDir)\emucore\m6502;$(ProjectDir)\emucore\m6502\src;$(ProjectDir)\emucore\m6502\src\bspf;$(ProjectDir)\emucore\m6502\src\bspf\src;$(ProjectDir)\emucore\rsynth;$(ProjectDir)\environment;$(ProjectDir)\games;$(ProjectDir)\games\supported;$(ProjectDir)\os_dependent;$(SourcePath)</SourcePath>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>NativeMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir);$(ProjectDir)\dependencies\include;$(ProjectDir)\agents;$(ProjectDir)\common;$(ProjectDir)\controllers;$(ProjectDir)\emucore;$(ProjectDir)\emucore\m6502;$(ProjectDir)\emucore\m6502\src;$(ProjectDir)\emucore\m6502\src\bspf;$(ProjectDir)\emucore\m6502\src\bspf\src;$(ProjectDir)\emucore\rsynth;$(ProjectDir)\environment;$(ProjectDir)\games;$(ProjectDir)\games\supported;$(ProjectDir)\os_dependent</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(ProjectDir)\dependencies\lib_win_x64;$(LibraryPath)</LibraryPath>
     <SourcePath>$(VC_SourcePath);$(ProjectDir);$(ProjectDir)\agents;$(ProjectDir)\common;$(ProjectDir)\controllers;$(ProjectDir)\emucore;$(ProjectDir)\emucore\m6502;$(ProjectDir)\emucore\m6502\src;$(ProjectDir)\emucore\m6502\src\bspf;$(ProjectDir)\emucore\m6502\src\bspf\src;$(ProjectDir)\emucore\rsynth;$(ProjectDir)\environment;$(ProjectDir)\games;$(ProjectDir)\games\supported;$(ProjectDir)\os_dependent;$(SourcePath)</SourcePath>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -139,6 +143,7 @@
     <ClCompile Include="agents\RandomAgent.cpp" />
     <ClCompile Include="agents\SDLKeyboardAgent.cpp" />
     <ClCompile Include="agents\SingleActionAgent.cpp" />
+    <ClCompile Include="ale_python_interface\ale_c_wrapper.cpp" />
     <ClCompile Include="common\Constants.cpp" />
     <ClCompile Include="common\Defaults.cpp" />
     <ClCompile Include="common\display_screen.cpp" />
@@ -296,7 +301,12 @@
     <ClInclude Include="agents\RandomAgent.hpp" />
     <ClInclude Include="agents\SDLKeyboardAgent.hpp" />
     <ClInclude Include="agents\SingleActionAgent.hpp" />
-    <ClInclude Include="ale_interface.hpp" />
+    <ClInclude Include="ale_interface.hpp">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <DeploymentContent>false</DeploymentContent>
+    </ClInclude>
+    <ClInclude Include="ale_python_interface\ale_c_wrapper.h" />
+    <ClInclude Include="ale_python_interface\atari_ntsc_rgb_palette.h" />
     <ClInclude Include="common\Array.hxx" />
     <ClInclude Include="common\Constants.h" />
     <ClInclude Include="common\Defaults.hpp" />

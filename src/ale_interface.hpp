@@ -60,9 +60,9 @@ static void createOSystem(int argc, char* argv[],
 #ifdef BSPF_WIN32
     theOSystem.reset(new OSystemWin32());
     theSettings.reset(new SettingsWin32(theOSystem.get()));
-#else
-    theOSystem.reset(new OSystemUNIX());
-    theSettings.reset(new SettingsUNIX(theOSystem.get()));
+//#else
+//    theOSystem.reset(new OSystemUNIX());
+//    theSettings.reset(new SettingsUNIX(theOSystem.get()));
 #endif
    
     setDefaultSettings(theOSystem->settings());
@@ -89,9 +89,8 @@ static void createOSystem(int argc, char* argv[],
     }
 
     // attempt to load the ROM
-    if (argc == 1 || romfile == "" || !FilesystemNode::fileExists(romfile)) {
-		
-        std::cerr << "No ROM File specified or the ROM file was not found." << std::endl;
+    if (argc == 1 || romfile == "" || !FilesystemNode::fileExists(romfile)) {		
+        std::cerr << "No ROM File specified or the ROM file was not found at: " << romfile << std::endl;
         exit(1); 
 
     } else if (theOSystem->createConsole(romfile))  {
